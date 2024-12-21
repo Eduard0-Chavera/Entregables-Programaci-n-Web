@@ -33,10 +33,8 @@ function addToCart(name, price) {
     const productIndex = cart.findIndex(product => product.name === name);
 
     if (productIndex === -1) {
-        // Si no está, agregar el producto al carrito
         cart.push({ name, price, quantity: 1 });
     } else {
-        // Si está, aumentar la cantidad
         cart[productIndex].quantity += 1;
     }
 
@@ -97,7 +95,6 @@ function updateCartItems() {
 
 // Función para inicializar la página de compras (compras.html)
 document.addEventListener("DOMContentLoaded", function () {
-    // Si estamos en la página de compras, actualizamos la lista de productos
     if (document.body.contains(document.getElementById('cart-items'))) {
         updateCartItems();
     }
@@ -111,12 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const productName = card.querySelector('.card-title').textContent;
             const productPrice = parseFloat(card.querySelector('.card-price').textContent.replace('S/.', '').trim());
 
-            // Agregar el producto al carrito
             addToCart(productName, productPrice);
         });
     });
 
-    // Actualizar el icono del carrito en el navbar (index.html)
     updateCart();
 });
 
